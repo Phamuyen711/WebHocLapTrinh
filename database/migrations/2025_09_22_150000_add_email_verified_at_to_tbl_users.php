@@ -1,0 +1,18 @@
+<?php
+// database/migrations/2025_09_22_000001_add_email_verified_at_to_tbl_users.php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up() {
+        Schema::table('tbl_users', function (Blueprint $table) {
+            $table->timestamp('email_verified_at')->nullable()->after('email');
+        });
+    }
+    public function down() {
+        Schema::table('tbl_users', function (Blueprint $table) {
+            $table->dropColumn('email_verified_at');
+        });
+    }
+};
